@@ -8,7 +8,7 @@ import { createAutoSyncWorkflow } from './auto-sync-workflow'
 import { validateSourceConfig } from './sync-cloud-ledger'
 
 const exec = promisify(execFile)
-const APP_REPOSITORY = 'ststyin/countwell'
+const APP_REPOSITORY = 'ststyin/Countwell'
 const WORKFLOW_PATH = '.github/workflows/countwell-sync.yml'
 const MANAGED_MARKER = '# Managed by Countwell auto-sync.'
 const ENABLED_VARIABLE = 'COUNTWELL_AUTO_SYNC_ENABLED'

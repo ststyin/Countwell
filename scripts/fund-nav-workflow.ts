@@ -19,7 +19,7 @@ export function createFundNavWorkflow(): string {
         'timeout-minutes': 10,
         steps: [
           { name: 'Checkout latest ledger', uses: 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262', with: { ref: '${{ github.ref_name }}', path: 'ledger' } },
-          { name: 'Checkout Countwell', uses: 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262', with: { repository: 'ststyin/countwell', ref: 'main', path: 'countwell', 'persist-credentials': false } },
+          { name: 'Checkout Countwell', uses: 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262', with: { repository: 'ststyin/Countwell', ref: 'main', path: 'countwell', 'persist-credentials': false } },
           { name: 'Set up Node', uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020', with: { 'node-version': 22, cache: 'npm', 'cache-dependency-path': 'countwell/package-lock.json' } },
           { name: 'Set up Python', uses: 'actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065', with: { 'python-version': '3.12', cache: 'pip', 'cache-dependency-path': 'countwell/requirements.txt' } },
           { name: 'Install dependencies', 'working-directory': 'countwell', run: 'npm ci --silent\npython -m pip install -q -r requirements.txt' },
