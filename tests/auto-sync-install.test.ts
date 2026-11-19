@@ -51,7 +51,7 @@ function runner(options: { private?: boolean; ownerId?: number; ownerType?: stri
       }
       const endpoint = args.find(arg => arg.startsWith('repos/'))!
       if (endpoint === 'repos/fictional/ledger') return { stdout: JSON.stringify({ private: options.private ?? true, full_name: 'fictional/ledger', default_branch: 'main', owner: { type: options.ownerType ?? 'User', id: options.ownerId ?? 42 } }) }
-      if (endpoint.startsWith('repos/ststyin/countwell/commits/')) {
+      if (endpoint.startsWith('repos/ststyin/Countwell/commits/')) {
         if (options.appMissing) throw missing()
         return { stdout: JSON.stringify({ sha: options.appSha === undefined ? appRef : options.appSha }) }
       }
@@ -115,7 +115,7 @@ describe('managed private ledger auto-sync installation', () => {
     const commands = runner()
     const result = await installAutoSync({}, { projectDirectory: root, runCommand: commands.execute })
     expect(result.appRef).toBe('main')
-    expect(commands.calls.some(call => call.args.includes('repos/ststyin/countwell/commits/main'))).toBe(true)
+    expect(commands.calls.some(call => call.args.includes('repos/ststyin/Countwell/commits/main'))).toBe(true)
     const metadata = JSON.parse(await readFile(join(root, '.countwell/cloud/auto-sync.json'), 'utf8'))
     expect(metadata.appRef).toBe('main')
     await installAutoSync({}, { projectDirectory: root, runCommand: commands.execute })
